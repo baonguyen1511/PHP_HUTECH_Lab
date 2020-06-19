@@ -192,11 +192,15 @@
                 foreach ($prods as $item) {
                 ?>
                     <div class="col-sm-4">
-                        <img src="<?php echo "" . $item["Picture"]; ?>" class="img-responsive" style="width:100%" alt="Image">
-                        <p class="text-danger"><?php echo $item["ProductName"]; ?></p>
+                        <a href="./product_details.php?id=<?php echo $item["ProductID"]; ?>">
+                            <img src="<?php echo "" . $item["Picture"]; ?>" class="img-responsive" style="width:100%" alt="Image">
+                        </a>
+                        <a href="./product_details.php?id=<?php echo $item["ProductID"]; ?>">
+                            <p class="text-danger"><?php echo $item["ProductName"]; ?></p>
+                        </a>
                         <p class="text-info"><span class="hisprice"><?php echo $item["Price"]; ?></span></p>
                         <p>
-                            <button type="button" class="btn btn-primary">Mua hàng</button>
+                            <button type="button" class="btn btn-primary">Thêm vào giỏ hàng</button>
                         </p>
                     </div>
                 <?php } ?>

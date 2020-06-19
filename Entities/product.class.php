@@ -64,7 +64,7 @@ class Product
     {
         # code...
         $db = new Db();
-        $sql = "SELECT * FROM product WHERE CateID='$cateid' productID!='$id'";
+        $sql = "SELECT * FROM product WHERE CateID='$cateid' AND productID!='$id'";
         $result = $db->select_to_array($sql);
         return $result;
     }

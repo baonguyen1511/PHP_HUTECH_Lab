@@ -38,19 +38,16 @@ $cates = Category::list_category();
             <?php echo $prod["ProductName"]; ?>
           </h3>
           <p>
-            Gia: <?php echo $prod["Price"]; ?>
+            Giá: <?php echo $prod["Price"]; ?>
           </P>
           <p>
-            Mo ta: <?php echo $prod["Description"]; ?>
-          </p>
-          <p>
-            <button type="button" class="btn btn-danger">Mua hang</button>
+            Mô tả: <?php echo $prod["Description"]; ?>
           </p>
         </div>
       </div>
     </div>
     <h3 class="panel-heading">Sản phẩm liên quan</h3>
-    <div classe="row">
+    <div class="row">
       <?php
       foreach ($prods_relate as $item) {
       ?>
@@ -58,11 +55,10 @@ $cates = Category::list_category();
           <a href="./product_detail.php?id=<?php echo $item["ProductID"]; ?>">
             <img src="<?php echo "./" . $item["Picture"]; ?>" class="img-responsive" style="width:100%" alt="Image">
           </a>
-          <p class="text-danger"><?php echo $item["ProductName"]; ?></p>
+          <a href="./product_detail.php?id=<?php echo $item["ProductID"]; ?>">
+            <p class="text-danger"><?php echo $item["ProductName"]; ?></p>
+          </a>
           <p class="text-info"><?php echo $item["Price"]; ?></p>
-          <p>
-            <button type="button" class="btn btn-primary">Mua hàng</button>
-          </P>
         </div>
       <?php } ?>
     </div>

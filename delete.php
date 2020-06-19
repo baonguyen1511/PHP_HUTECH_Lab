@@ -9,5 +9,5 @@ $sql = "DELETE FROM product WHERE ProductID = '" . $_POST['ProductID'] . "'";
 $db = new Db();
 $result = $db->query_execute($sql);
 if ($result) {
-    header("Location:manager_product.php");
+    header("Location:list_product.php");
 }
