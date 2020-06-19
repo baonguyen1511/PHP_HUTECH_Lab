@@ -1,0 +1,31 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr {background-color: #f2f2f2;}
+.product th{
+    width:8%;
+    background-color: #4CAF50;
+    color: white;
+}
+.product th.image{
+    width:15%;
+    background-color: #4CAF50;
+    color: white;
+}
+.product th.name{
+    width:13%;
+    background-color: #4CAF50;
+    color: white;
+}
+.product th.descript{
+    width:23%;
+    background-color: #4CAF50;
+    color: white;
+}
