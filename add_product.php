@@ -19,7 +19,7 @@
 	Product Admin CSS Template
 	https://templatemo.com/tm-524-product-admin
     -->
-    <link rel="stylesheet" href="mana.css">
+    <link rel="stylesheet" href="css/custom.css">
 </head>
 
 <body>
@@ -159,54 +159,46 @@
     </div>
     </div>
 
-    
-        <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12 mx-auto">
-            <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
-                <h3 style="color: white;">Danh mục</h3>
-                <ul class="list-group">
+
+    <div class="col-xl-12 col-lg-10 col-md-12 col-sm-12 mx-auto">
+        <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
+            <h3 style="color: white;" class="text-center">Danh sách tất cả sản phẩm</h3>
+            <div style="overflow-x:auto;">
+                <table class="product">
+                    <tr>
+                        <th>Mã sản phẩm</th>
+                        <th class="image">Hình ảnh</th>
+                        <th class="name">Tên</th>
+                        <th>Loại</th>
+                        <th>Giá</th>
+                        <th>Số lượng</th>
+                        <th class="descript">Mô tả</th>
+                        <th>Thao tác</th>
+                    </tr>
                     <?php
-                    foreach ($cates as $item) {
-                        echo "<li class='list-group-item'><a href=./add_product.php?cateid=" . $item["CateID"] . ">" . $item["CategoryName"] . "</a></li>";
-                    }
+                    foreach ($prods as $item) {
                     ?>
-                </ul>
-                <br>
-                <div style="overflow-x:auto;">
-                    <table class="product">
                         <tr>
-                            <th>ID</th>
-                            <th class="image">Hình ảnh</th>
-                            <th class="name">Tên</th>
-                            <th>Loại</th>
-                            <th>Giá</th>
-                            <th>Số lượng</th>
-                            <th class="descript">Mô tả</th>
-                            <th></th>
+                            <td><?php echo $item["ProductID"]; ?></td>
+                            <td><a href="./product_detail.php?id=<?php echo $item["ProductID"]; ?>"><img src="<?php echo $item["Picture"]; ?>" classs="img-responsive" alt="<?php echo $item["ProductName"]; ?>" style="width:100px"></a></td>
+                            <td><a href="./product_detail.php?id=<?php echo $item["ProductID"]; ?>"><?php echo $item["ProductName"]; ?></a></td>
+                            <td><?php echo $item["CateID"]; ?></td>
+                            <td><?php echo $item["Price"]; ?></td>
+                            <td><?php echo $item["Quantity"]; ?></td>
+                            <td>
+                                <p><?php echo substr($item["Description"], 0, 120) . "..."; ?></p>
+                            </td>
+                            <td>
+                                <a class="navbar-brand" href="<?php echo "./edit_product.php?id=" . $item["ProductID"]; ?>">Sửa</a>
+                                <a class="navbar-brand" href="delete.php?ProductID=<?php echo $item['ProductID']; ?>">Xóa</a>
+                            </td>
                         </tr>
-                        <?php
-                        foreach ($prods as $item) {
-                        ?>
-                            <tr>
-                                <td><?php echo $item["ProductID"]; ?></td>
-                                <td><img src="<?php echo $item["Picture"]; ?>" classs="img-responsive" alt="<?php echo $item["ProductName"]; ?>" style="width:100px"></td>
-                                <td><?php echo $item["ProductName"]; ?></td>
-                                <td><?php echo $item["CateID"]; ?></td>
-                                <td><?php echo $item["Price"]; ?></td>
-                                <td><?php echo $item["Quantity"]; ?></td>
-                                <td>
-                                    <p><?php echo substr($item["Description"], 0, 120) . "..."; ?></p>
-                                </td>
-                                <td>
-                                    <a class="navbar-brand" href="<?php echo "./edit_product.php?id=" . $item["ProductID"]; ?>">Sửa</a>
-                                    <a class="navbar-brand" href="delete.php?ProductID=<?php echo $item['ProductID']; ?>">Xóa</a>
-                                </td>
-                            </tr>
-                        <?php } ?>
-                    </table>
-                </div>
+                    <?php } ?>
+                </table>
             </div>
         </div>
-  
+    </div>
+
 
     <?php include_once("footer.php"); ?>
 

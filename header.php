@@ -7,6 +7,7 @@
     <link href="./site.css" rel="stylesheet" />
     <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <link rel="stylesheet" href="css/custom.css">
     <title href>Tech shop | Danh sách SP</title>
 </head>
 

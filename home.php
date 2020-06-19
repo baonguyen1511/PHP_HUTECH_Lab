@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="assets/css/nice-select.css">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
     <!--? Preloader Start -->
     <div id="preloader-active">

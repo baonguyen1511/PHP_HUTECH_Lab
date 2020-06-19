@@ -8,9 +8,9 @@ include_once("header.php");
 if (!isset($_GET["id"])) {
   header('Location: not_found.php');
 } else {
-  $cateid = $_GET["id"];
-  $prods = reset(Product::get_product($id));
-  $prods_relate = Product::list_product_relate($prods["CateID"], $id);
+  $id = $_GET["id"];
+  $prod = reset(Product::get_product($id));
+  $prods_relate = Product::list_product_relate($prod["CateID"], $id);
 }
 $cates = Category::list_category();
 ?>
@@ -22,7 +22,7 @@ $cates = Category::list_category();
       <?php
       foreach ($cates as $item) {
         echo "<li class ='list-group-item'><a 
-      href=./list_product.php?cateid=" . $item = ["CateID"] . ">" . $item["CategoryName"] . "</a></li>";
+      href=./list_product.php?cateid=" . $item["CateID"] . ">" . $item["CategoryName"] . "</a></li>";
       } ?>
     </ul>
   </div>
@@ -54,8 +54,8 @@ $cates = Category::list_category();
       <?php
       foreach ($prods_relate as $item) {
       ?>
-        <div class="col-sm-a">
-          <a href="./product_detail.php?ids<?php echo $item["ProductID"]; ?>">
+        <div class="col-sm-4">
+          <a href="./product_detail.php?id=<?php echo $item["ProductID"]; ?>">
             <img src="<?php echo "./" . $item["Picture"]; ?>" class="img-responsive" style="width:100%" alt="Image">
           </a>
           <p class="text-danger"><?php echo $item["ProductName"]; ?></p>
