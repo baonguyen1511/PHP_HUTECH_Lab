@@ -69,7 +69,7 @@
                                         <li><a href="#">Product Checkout</a></li>
                                     </ul>
                                     </li>
-                                    <li><a href="index.php">Quản lí</a></li>
+                                    <li><a href="list_product.php">Quản lí</a></li>
                                 </ul>
                             </nav>
                         </div>

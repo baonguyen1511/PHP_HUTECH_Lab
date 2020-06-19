@@ -197,7 +197,7 @@
                                     <p><?php echo substr($item["Description"], 0, 120) . "..."; ?></p>
                                 </td>
                                 <td>
-                                    <a class="navbar-brand" href="<?php echo "/lab3/edit_product.php?id=" . $item["ProductID"]; ?>">Sửa</a>
+                                    <a class="navbar-brand" href="<?php echo "./edit_product.php?id=" . $item["ProductID"]; ?>">Sửa</a>
                                     <a class="navbar-brand" href="delete.php?ProductID=<?php echo $item['ProductID']; ?>">Xóa</a>
                                 </td>
                             </tr>

@@ -60,6 +60,23 @@ class Product
         return $result;
     }
 
+    public static function list_product_relate($cateid, $id)
+    {
+        # code...
+        $db = new Db();
+        $sql = "SELECT * FROM product WHERE CateID='$cateid' productID!='$id'";
+        $result = $db->select_to_array($sql);
+        return $result;
+    }
+
+    public static function get_product($id)
+    {
+        $db = new Db();
+        $sql = "SELECT * from product where productID='$id'";
+        $result = $db->select_to_array($sql);
+        return $result;
+    }
+
     public function edit_product($id)
     {
         $file_temp = $this->picture['tmp_name'];
@@ -75,13 +92,7 @@ class Product
         if ($result == false) return false;
         return true;
     }
-    public static function get_product($id)
-    {
-        $db = new Db();
-        $sql = "SELECT * from product where ProductID=" . $id;
-        $result = $db->select_to_array($sql);
-        return $result;
-    }
+
     public static function delect_product($id)
     {
         $db = new Db();
