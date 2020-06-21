@@ -17,7 +17,7 @@ if (isset($_POST["btnsubmit"])) {
     $description = $_POST["txtdesc"];
     $picture = $_FILES["txtpic"];
     $newProduct = new Product($productName, $cateID, $price, $quantity, $description, $picture);
-    $result = $newProduct->edit_product($productID);
+    $result = $newProduct->edit_product($id);
     if (!$result) {
         header("Location:edit_product.php?id=$id");
         
@@ -33,7 +33,7 @@ if (isset($_GET["failure"])) {
     echo '</script>';
 }
 ?>
-<div class="container">
+<div class="container";>
     <div class="col-sm-9 panel panel-info">
         <h3 class="panel-heading text-center">Cập nhật thông tin</h3>
         <?php
@@ -41,37 +41,43 @@ if (isset($_GET["failure"])) {
         ?>
             <form method="post" enctype="multipart/form-data">
                 <div class="form-group">
-                    <input type="hidden" class="form-control" name="id" value="<?php echo $item["ProductID"];
-                                                                                echo isset($_POST["id"]) ? $_POST["id"] : ""; ?>" />
+                    <input type="hidden" class="form-control" name="id" 
+                    value="<?php echo $item["ProductID"];
+                    echo isset($_POST["id"]) ? $_POST["id"] : ""; ?>" />
                 </div>
                 <div class="form-group">
                     <label>Tên sản phẩm</label>
-                    <input type="text" class="form-control" name="txtName" value="<?php echo $item["ProductName"];
-                                                                                    echo isset($_POST["txtName"]) ? $_POST["txtName"] : ""; ?>" />
+                    <input type="text" class="form-control" name="txtName" 
+                    value="<?php echo $item["ProductName"];
+                    echo isset($_POST["txtName"]) ? $_POST["txtName"] : ""; ?>" />
                 </div>
                 <div class="form-group">
                     <label>Mô tả</label>
-                    <textarea class="form-control" name="txtdesc" cols="21" rows="10" value=""><?php echo $item["Description"];
-                                                                                                echo isset($_POST["txtdesc"]) ? $_POST["txtdesc"] : ""; ?></textarea>
+                    <textarea class="form-control" name="txtdesc" cols="21" rows="10" 
+                    value=""><?php echo $item["Description"];
+                    echo isset($_POST["txtdesc"]) ? $_POST["txtdesc"] : ""; ?></textarea>
                 </div>
                 <div class="form-group">
                     <div class="form-row">
                         <div class="col">
                             <label>Số lượng</label>
-                            <input class="form-control" type="number" name="txtquantity" value="<?php echo $item["Quantity"];
-                                                                                                echo isset($_POST["txtquantity"]) ? $_POST["txtquantity"] : ""; ?>" />
+                            <input class="form-control" type="number" name="txtquantity" 
+                            value="<?php echo $item["Quantity"];
+                            echo isset($_POST["txtquantity"]) ? $_POST["txtquantity"] : ""; ?>" />
                         </div>
                         <div class="col">
                             <label>Giá</label>
-                            <input class="form-control" type="number" name="txtprice" value="<?php echo $item["Price"];
-                                                                                                echo isset($_POST["txtprice"]) ? $_POST["txtprice"] : ""; ?>" />
+                            <input class="form-control" type="number" name="txtprice" 
+                            value="<?php echo $item["Price"];
+                            echo isset($_POST["txtprice"]) ? $_POST["txtprice"] : ""; ?>" />
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label>Loại sản phẩm</label>
-                    <select class="form-control" type="number" name="txtCateID" value="<?php echo $item["CateID"];
-                                                                                        echo isset($_POST["txtCateID"]) ? $_POST["txtCateID"] : ""; ?>">
+                    <select class="form-control" type="number" name="txtCateID" 
+                    value="<?php echo $item["CateID"];
+                    echo isset($_POST["txtCateID"]) ? $_POST["txtCateID"] : ""; ?>">
                         <?php
                         require_once("./config/db.class.php");
                         $db = new Db();

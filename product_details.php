@@ -149,7 +149,7 @@ $cates = Category::list_category();
                 <?php
                 foreach ($prods_relate as $item) {
                 ?>
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                         <a href="./product_details.php?id=<?php echo $item["ProductID"]; ?>">
                             <img src="<?php echo "./" . $item["Picture"]; ?>" class="img-responsive" style="width:100%" alt="Image">
                         </a>

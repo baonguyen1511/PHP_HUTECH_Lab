@@ -195,7 +195,7 @@
 
                             </td>
                             <td>
-                                <a role="button" class="btn btn-danger" href="delete.php?ProductID=<?php echo $item['ProductID']; ?>">Xóa</a>
+                                <a role="button" class="btn btn-danger" onclick="del()">Xóa</a>
                             </td>
                         </tr>
                     <?php } ?>
@@ -213,6 +213,14 @@
     <!-- https://jqueryui.com/download/ -->
     <script src="js/bootstrap.min.js"></script>
     <!-- https://getbootstrap.com/ -->
+
+    <script>
+        function del() {
+            if (confirm("Bạn có thật sự muốn xóa")) { 
+                $(location).attr('href', 'delete.php?ProductID=<?php echo $item['ProductID']; ?>')
+            }
+        }
+    </script>
 </body>
 
 </html>
