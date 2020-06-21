@@ -2,10 +2,10 @@
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 15, 2020 lúc 05:52 AM
--- Phiên bản máy phục vụ: 10.4.11-MariaDB
--- Phiên bản PHP: 7.4.6
+-- Host: 127.0.0.1
+-- Generation Time: Jun 21, 2020 at 09:34 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `ecommerce`
+-- Database: `ecommerce`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `category`
+-- Table structure for table `category`
 --
 
 CREATE TABLE `category` (
@@ -34,7 +34,7 @@ CREATE TABLE `category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `category`
+-- Dumping data for table `category`
 --
 
 INSERT INTO `category` (`CateID`, `CategoryName`, `Descrip`) VALUES
@@ -45,7 +45,7 @@ INSERT INTO `category` (`CateID`, `CategoryName`, `Descrip`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `orderdetail`
+-- Table structure for table `orderdetail`
 --
 
 CREATE TABLE `orderdetail` (
@@ -57,7 +57,7 @@ CREATE TABLE `orderdetail` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `orderproduct`
+-- Table structure for table `orderproduct`
 --
 
 CREATE TABLE `orderproduct` (
@@ -71,7 +71,7 @@ CREATE TABLE `orderproduct` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `product`
+-- Table structure for table `product`
 --
 
 CREATE TABLE `product` (
@@ -85,21 +85,24 @@ CREATE TABLE `product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `product`
+-- Dumping data for table `product`
 --
 
 INSERT INTO `product` (`ProductID`, `ProductName`, `CateID`, `Price`, `Quantity`, `Description`, `Picture`) VALUES
-(64, 'Laptop Lenovo IdeaPad S340 14IIL i3 1005G1/8GB/512GB/Win10 (81VV003VVN)', 3, 13690000, 68, ' CPU:	Intel Core i3 Ice Lake, 1005G1, 1.20 GHz\r\nRAM:	8 GB, DDR4 (On board 4GB +1 khe 4GB), 2666 MHz\r\nỔ cứng:	SSD 512 GB M.2 PCIe, Hỗ trợ khe cắm HDD SATA\r\nMàn hình:	14 inch, Full HD (1920 x 1080)\r\nCard màn hình:	Card đồ họa tích hợp, Intel UHD Graphics\r\nCổng kết nối:	2 x USB 3.1, HDMI, USB Type-C\r\nHệ điều hành:	Windows 10 Home SL\r\nThiết kế:	Vỏ nhựa - nắp lưng bằng kim loại, PIN liền\r\nKích thước:	Dày 17.9 mm, 1.6 kg\r\nThời điểm ra mắt:	2019', 'uploads/20200608050355lenovo-ideapad-s340-14iil-i3-1005g1-8gb-512gb-win1-18-600x600.jpg'),
-(65, 'Laptop Asus VivoBook A412F i5 10210U/8GB/32GB+512GB/Win10 (EK739T)', 3, 17490000, 121, ' CPU:	Intel Core i5 Comet Lake, 10210U, 1.60 GHz\r\nRAM:	8 GB, DDR4 (On board 4GB +1 khe 4GB), 2666 MHz\r\nỔ cứng:	Intel Optane 32GB (H10), SSD 512 GB M.2 PCIe, Hỗ trợ khe cắm HDD SATA\r\nMàn hình:	14 inch, Full HD (1920 x 1080)\r\nCard màn hình:	Card đồ họa tích hợp, Intel UHD Graphics\r\nCổng kết nối:	USB 3.1, HDMI, USB 2.0, USB Type-C\r\nHệ điều hành:	Windows 10 Home SL\r\nThiết kế:	Vỏ nhựa, PIN liền\r\nKích thước:	Dày 19.5 mm, 1.406 kg\r\nThời điểm ra mắt:	2019', 'uploads/20200608050618asus-vivobook-a412f-i510210u-8gb-32gb-512gb-win10-218865-600x600.jpg'),
-(66, 'Laptop Apple MacBook Air 2017 i5 1.8GHz/8GB/128GB (MQD32SA/A)', 3, 19990000, 59, ' CPU:	Intel Core i5 Broadwell, 1.80 GHz\r\nRAM:	8 GB, DDR3L(On board), 1600 MHz\r\nỔ cứng:	SSD: 128 GB\r\nMàn hình:	13.3 inch, WXGA+(1440 x 900)\r\nCard màn hình:	Card đồ họa tích hợp, Intel HD Graphics 6000\r\nCổng kết nối:	MagSafe 2, 2 x USB 3.0, Thunderbolt 2\r\nHệ điều hành:	Mac OS\r\nThiết kế:	Vỏ kim loại nguyên khối, PIN liền\r\nKích thước:	Dày 17 mm, 1.35 Kg\r\nThời điểm ra mắt:	2017', 'uploads/20200608050758apple-macbook-air-mqd32sa-a-i5-5350u-600x600.jpg'),
-(78, 'Laptop Apple MacBook Air 2020 i3 1.1GHz/8GB/256GB (MWTL2SA/A)', 3, 28990000, 1212, ' CPU:	Intel Core i3 Thế hệ 10, 1.10 GHz\r\nRAM:	8 GB, LPDDR4X (On board), 3733 MHz\r\nỔ cứng:	SSD: 256 GB\r\nMàn hình:	13.3 inch, Retina (2560 x 1600)\r\nCard màn hình:	Card đồ họa tích hợp, Intel Iris Plus Graphics\r\nCổng kết nối:	2 x Thunderbolt 3 (USB-C)\r\nHệ điều hành:	Mac OS\r\nThiết kế:	Vỏ kim loại nguyên khối, PIN liền\r\nKích thước:	Dày 4.1 mm đến 16.1 mm, 1.29 kg\r\nThời điểm ra mắt:	2020', 'uploads/20200614073057apple-macbook-air-2020-i3-220174-600x600.jpg'),
-(79, 'Laptop Acer Nitro AN515 43 R9FD R5 3550H/8GB/512GB/4GB GTX1650/Win10 (NH.Q6ZSV.003)', 3, 19490000, 2124, ' CPU:	AMD Ryzen 5, 3550H, 2.10 GHz\r\nRAM:	8 GB, DDR4 (2 khe), 2400 MHz\r\nỔ cứng:	SSD 512 GB M.2 PCIe, Hỗ trợ khe cắm HDD SATA\r\nMàn hình:	15.6 inch, Full HD (1920 x 1080)\r\nCard màn hình:	Card đồ họa rời, NVIDIA GeForce GTX 1650 4GB\r\nCổng kết nối:	2 x USB 3.1, HDMI, LAN (RJ45), USB 2.0, USB Type-C\r\nHệ điều hành:	Windows 10 Home SL\r\nThiết kế:	Vỏ nhựa, PIN liền\r\nKích thước:	Dày 25.9 mm, 2.3 kg\r\nThời điểm ra mắt:	2019', 'uploads/20200614073437acer-nitro-an515-43-r5-nhq6zsv003-600x600.jpg'),
-(80, ' Laptop HP Envy x360 ar0072AU R7 3700U/8GB/256GB/Touch/Win10', 3, 25890000, 1213, ' CPU:	AMD Ryzen 7, 3700U, 2.30 GHz\r\nRAM:	8 GB, DDR4 (On board), 2400 MHz\r\nỔ cứng:	SSD 256GB NVMe PCIe\r\nMàn hình:	13.3 inch, Full HD (1920 x 1080)\r\nCard màn hình:	Card đồ họa tích hợp, AMD Radeon Vega 10 Graphics\r\nCổng kết nối:	2 x USB 3.1, USB Type-C\r\nHệ điều hành:	Windows 10 Home SL\r\nThiết kế:	Vỏ kim loại nguyên khối, PIN liền\r\nKích thước:	Dày 14.7 mm, 1.31 kg\r\nThời điểm ra mắt:	2019', 'uploads/20200614073644hp-envy-x360-ar0072au-r7-3700u-8gb-256gb-touch-win2-600x600.jpg');
+(100, 'iPhone 11 64GB', 1, 19490000, 123, ' Màn hình:	IPS LCD, 6.1\", Liquid Retina\r\nHệ điều hành:	iOS 13\r\nCamera sau:	Chính 12 MP & Phụ 12 MP\r\nCamera trước:	12 MP\r\nCPU:	Apple A13 Bionic 6 nhân\r\nRAM:	4 GB\r\nBộ nhớ trong:	64 GB\r\nThẻ SIM:\r\n1 eSIM & 1 Nano SIM, Hỗ trợ 4G\r\nDung lượng pin:	3110 mAh, có sạc nhanh', 'uploads/20200621091245iphone-11-red-2-400x460-400x460.png'),
+(101, 'iPhone 11 Pro Max 512GB', 1, 40490000, 123, ' Màn hình:	OLED, 6.5\", Super Retina XDR\r\nHệ điều hành:	iOS 13\r\nCamera sau:	3 camera 12 MP\r\nCamera trước:	12 MP\r\nCPU:	Apple A13 Bionic 6 nhân\r\nRAM:	4 GB\r\nBộ nhớ trong:	512 GB\r\nThẻ SIM:\r\n1 eSIM & 1 Nano SIM, Hỗ trợ 4G\r\nDung lượng pin:	3969 mAh, có sạc nhanh', 'uploads/20200621091343iphone-11-pro-max-512gb-gold-400x460.png'),
+(102, 'iPhone Xs Max 256GB', 1, 25990000, 123, ' Màn hình:	OLED, 6.5\", Super Retina\r\nHệ điều hành:	iOS 12\r\nCamera sau:	Chính 12 MP & Phụ 12 MP\r\nCamera trước:	7 MP\r\nCPU:	Apple A12 Bionic 6 nhân\r\nRAM:	4 GB\r\nBộ nhớ trong:	256 GB\r\nThẻ SIM:\r\n1 eSIM & 1 Nano SIM, Hỗ trợ 4G\r\nDung lượng pin:	3174 mAh, có sạc nhanh', 'uploads/20200621091512iphone-xs-max-256gb-white-400x460.png'),
+(105, 'Apple MacBook Air 2017 i5 1.8GHz/8GB/128GB', 3, 1990000, 13, 'Màn hình: 13.3 inch, WXGA+(1440 x 900)\r\nCPU: Intel Core i5 Broadwell, 1.80 GHz\r\nRAM: 8 GB, SSD: 128 GB\r\nĐồ họa: Intel HD Graphics 6000\r\nHĐH: Mac OS\r\nNặng: 1.35 Kg, Pin: Khoảng 12 giờ', 'uploads/20200621092454apple-macbook-air-mqd32sa-a-i5-5350u-600x600.jpg'),
+(106, 'Apple MacBook Air 2020 i5 1.1GHz/8GB/256GB', 3, 30990000, 12, ' CPU:	Intel Core i5 Thế hệ 10, 1.10 GHz\r\nRAM:	8 GB, LPDDR4X (On board), 3733 MHz\r\nỔ cứng:	SSD: 256 GB\r\nMàn hình:	13.3 inch, Retina (2560 x 1600)\r\nCard màn hình:	Card đồ họa tích hợp, Intel Iris Plus Graphics\r\nCổng kết nối:	2 x Thunderbolt 3 (USB-C)\r\nHệ điều hành:	Mac OS\r\nThiết kế:	Vỏ kim loại nguyên khối, PIN liền\r\nKích thước:	Dày 4.1 mm đến 16.1 mm, 1.29 kg\r\nThời điểm ra mắt:	2020', 'uploads/20200621092658apple-macbook-air-2020-gold-1-600x600.jpg'),
+(107, 'Apple MacBook Pro 20202.0GHz/16GB/512GB', 3, 47990000, 16, ' CPU:	Intel Core i5 Thế hệ 10, 2.00 GHz\r\nRAM:	16 GB, LPDDR4X (On board), 3733 MHz\r\nỔ cứng:	SSD 512GB\r\nMàn hình:	13.3 inch, Retina (2560 x 1600)\r\nCard màn hình:	Card đồ họa tích hợp, Intel Iris Plus Graphics\r\nCổng kết nối:	4 x Thunderbolt 3 (USB-C)\r\nHệ điều hành:	Mac OS\r\nThiết kế:	Vỏ kim loại nguyên khối, PIN liền\r\nKích thước:	Dày 15.6 mm, 1.4\r\nThời điểm ra mắt:	2020', 'uploads/20200621092753macbook-pro-touch-2020-i5-mwp42sa-a-600x600.jpg'),
+(108, 'iPad 10.2 inch Wifi Cellular 32GB', 2, 11990000, 33, ' Màn hình	LED backlit LCD, 10.2\"\r\nHệ điều hành	iOS 13\r\nCPU	Apple A10 Fusion 4 nhân, 2.34 GHz\r\nRAM	3 GB\r\nBộ nhớ trong	32 GB\r\nCamera sau	8 MP\r\nCamera trước	1.2 MP\r\nKết nối mạng	WiFi, 3G, 4G LTE\r\nHỗ trợ SIM\r\n1 Nano SIM hoặc 1 eSIM\r\nĐàm thoại	FaceTime', 'uploads/20200621093011ipad-10-2-inch-wifi-cellular-32gb-2019-gold-400x460.png'),
+(109, 'iPad Pro 12.9 inch Wifi Cellular 128GB', 2, 31990000, 12, ' Màn hình	Liquid Retina, 12.9\"\r\nHệ điều hành	iPadOS 13\r\nCPU	Apple A12Z Bionic, 4 nhân 2.5 GHz & 4 nhân 1.6 GHz\r\nRAM	6 GB\r\nBộ nhớ trong	128 GB\r\nCamera sau	Chính 12 MP & Phụ 10 MP, TOF 3D LiDAR\r\nCamera trước	7 MP\r\nKết nối mạng	WiFi, 3G, Hỗ trợ 4G\r\nHỗ trợ SIM\r\n1 Nano SIM hoặc 1 eSIM\r\nĐàm thoại	FaceTime', 'uploads/20200621093138ipad-pro-12-9-inch-wifi-cellular-128gb-2020-bac-400x460-400x460.png'),
+(110, 'iPad Pro 12.9 inch Wifi 128GB', 2, 27490000, 19, ' Màn hình	Liquid Retina, 12.9\"\r\nHệ điều hành	iPadOS 13\r\nCPU	Apple A12Z Bionic, 4 nhân 2.5 GHz & 4 nhân 1.6 GHz\r\nRAM	6 GB\r\nBộ nhớ trong	128 GB\r\nCamera sau	Chính 12 MP & Phụ 10 MP, TOF 3D LiDAR\r\nCamera trước	7 MP\r\nKết nối mạng	WiFi, Không hỗ trợ 3G, Không hỗ trợ 4G\r\nĐàm thoại	FaceTime\r\nTrọng lượng	471 g', 'uploads/20200621093246ipad-pro-12-9-inch-wifi-128gb-2020-xam-400x460-1-400x460.png');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -110,88 +113,95 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`UserID`, `UserName`, `Email`, `Password`) VALUES
+(1, 'baonguyen', 'abc@gmail.com', '202cb962ac59075b964b07152d234b70');
+
+--
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `category`
+-- Indexes for table `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`CateID`);
 
 --
--- Chỉ mục cho bảng `orderdetail`
+-- Indexes for table `orderdetail`
 --
 ALTER TABLE `orderdetail`
   ADD PRIMARY KEY (`OrderID`),
   ADD KEY `ProductID` (`ProductID`);
 
 --
--- Chỉ mục cho bảng `orderproduct`
+-- Indexes for table `orderproduct`
 --
 ALTER TABLE `orderproduct`
   ADD PRIMARY KEY (`OrderID`);
 
 --
--- Chỉ mục cho bảng `product`
+-- Indexes for table `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`ProductID`),
   ADD KEY `CateID` (`CateID`);
 
 --
--- Chỉ mục cho bảng `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`UserID`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `category`
+-- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
   MODIFY `CateID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT cho bảng `orderdetail`
+-- AUTO_INCREMENT for table `orderdetail`
 --
 ALTER TABLE `orderdetail`
   MODIFY `OrderID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `orderproduct`
+-- AUTO_INCREMENT for table `orderproduct`
 --
 ALTER TABLE `orderproduct`
   MODIFY `OrderID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `product`
+-- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `ProductID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `ProductID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
 
 --
--- AUTO_INCREMENT cho bảng `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserID` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `UserID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- Các ràng buộc cho các bảng đã đổ
+-- Constraints for dumped tables
 --
 
 --
--- Các ràng buộc cho bảng `orderdetail`
+-- Constraints for table `orderdetail`
 --
 ALTER TABLE `orderdetail`
   ADD CONSTRAINT `orderdetail_ibfk_1` FOREIGN KEY (`ProductID`) REFERENCES `product` (`ProductID`),
   ADD CONSTRAINT `orderdetail_ibfk_2` FOREIGN KEY (`OrderID`) REFERENCES `orderproduct` (`OrderID`);
 
 --
--- Các ràng buộc cho bảng `product`
+-- Constraints for table `product`
 --
 ALTER TABLE `product`
   ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`CateID`) REFERENCES `category` (`CateID`);
