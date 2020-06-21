@@ -42,7 +42,8 @@ if (isset($_GET["inserted"])) {
                     <th>Giá</th>
                     <th>Số lượng</th>
                     <th class="descript">Mô tả</th>
-                    <th>Thao tác</th>
+                    <th></th>
+                    <th></th>
                 </tr>
                 <?php
                 foreach ($prods as $item) {
@@ -58,8 +59,11 @@ if (isset($_GET["inserted"])) {
                             <p><?php echo substr($item["Description"], 0, 120) . "..."; ?></p>
                         </td>
                         <td>
-                            <a class="navbar-brand" href="<?php echo "./edit_product.php?id=" . $item["ProductID"]; ?>">Sửa</a>
-                            <a class="navbar-brand" href="delete.php?ProductID=<?php echo $item['ProductID']; ?>">Xóa</a>
+                            <a role=" button" class="btn btn-success" href="<?php echo "./edit_product.php?id=" . $item["ProductID"]; ?>">Sửa</a>
+
+                        </td>
+                        <td>
+                            <a role="button" class="btn btn-danger" href="delete.php?ProductID=<?php echo $item['ProductID']; ?>">Xóa</a>
                         </td>
                     </tr>
                 <?php } ?>

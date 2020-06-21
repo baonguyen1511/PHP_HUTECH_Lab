@@ -1,10 +1,13 @@
 <!doctype html>
 <html lang="zxx">
+<?php
+session_start();
+?>
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Tech shop | Chi tiết sản phẩm</title>
+    <title>Tech shop | Giỏ hàng</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
@@ -22,27 +25,9 @@
     <link rel="stylesheet" href="assets/css/slick.css">
     <link rel="stylesheet" href="assets/css/nice-select.css">
     <link rel="stylesheet" href="assets/css/style.css">
-
 </head>
 
-<?php
-require_once("./entities/product.class.php");
-require_once("./entities/category.class.php");
-?>
-
-<?php
-if (!isset($_GET["id"])) {
-    header('Location: not_found.php');
-} else {
-    $id = $_GET["id"];
-    $prod = reset(Product::get_product($id));
-    $prods_relate = Product::list_product_relate($prod["CateID"], $id);
-}
-$cates = Category::list_category();
-?>
-
 <body>
-
     <header>
         <!-- Header Start -->
         <div class="header-area">
@@ -100,87 +85,115 @@ $cates = Category::list_category();
         </div>
         <!-- Header End -->
     </header>
-    <main>
+    <?php
+    require_once("./entities/product.class.php");
+    require_once("./entities/category.class.php");
+    $cates = Category::list_category();
 
-        <!--================Single Product Area =================-->
-        <div class="product_image_area">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8">
-                        <div class="product_img_slide owl-carousel">
-                            <div class="single_product_img">
-                                <img src="<?php echo "./" . $prod["Picture"]; ?>" class="img-responsive" style="width:100% " alt="image">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-8">
-                        <div class="single_product_text text-center">
-                            <h3 class="text-info">
-                                <?php echo $prod["ProductName"]; ?>
-                            </h3>
-                            <h2 class="text-danger">
-                                Giá tiền: <?php echo $prod["Price"]; ?>
-                            </h2>
-                            <p>
-                                Mô tả: <?php echo $prod["Description"]; ?>
-                            </p>
-                            <div class="card_area">
-                                <div class="product_count_area">
-                                    <p>Số lượng</p>
-                                    <div class="product_count d-inline-block">
-                                        <span class="product_count_item inumber-decrement"> <i class="ti-minus"></i></span>
-                                        <input class="product_count_item input-number" type="text" value="1" min="0" max="10">
-                                        <span class="product_count_item number-increment"> <i class="ti-plus"></i></span>
-                                    </div>
-                                </div>
-                                <div class="add_to_cart">
-                                    <button type="button" class="btn btn_primary" onclick="location.href='./shopping_cart.php?id=<?php echo $id; ?>'">Thêm vào giỏ hàng</button>
-                                </div>
+    error_reporting(E_ALL);
+    ini_set('display_errors', '1');
+    if (isset($_GET["id"])) {
+        $pro_id = $_GET["id"];
+        $was_found = false;
+        $i = 0;
+        if (!isset($_SESSION["cart_items"]) || count($_SESSION["cart_items"]) < 1) {
+            $_SESSION["cart_items"] = array(0 => array("pro_id" => $pro_id, "quantity" => 1));
+        }
+    } else {
+        foreach ($_SESSION["cart_items"] as $item) {
+            $i++;
+            while (list($key, $value) = each($item)) {
+                if ($key == 'pro_id' && $value == $pro_id) {
+                    # code...
+                    array_splice($_SESSION["cart_items"], $i - 1, 1, array(array("pro_id" => $pro_id, "quantity" => $item["quantity"] + 1)));
+                    $was_found = true;
+                }
+            }
+        }
+        if ($was_found == false) {
+            # code...
+            array_push($_SESSION["cart_items"], array("pro_id" => $pro_id, "quantity" => 1));
+        }
+        header("location: shopping_cart.php");
+    }
+    ?>
+    <main>
+        <!-- Hero Area Start-->
+        <div class="slider-area ">
+            <div class="single-slider slider-height2 d-flex align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="hero-cap text-center">
+                                <h2>Giỏ hàng</h2>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="container text-center">
-            <h3 class="panel-heading">Sản phẩm liên quan</h3>
-            <br>
-            <div class="row">
-                <?php
-                foreach ($prods_relate as $item) {
-                ?>
-                    <div class="col-sm-3">
-                        <a href="./product_details.php?id=<?php echo $item["ProductID"]; ?>">
-                            <img src="<?php echo "./" . $item["Picture"]; ?>" class="img-responsive" style="width:100%" alt="Image">
-                        </a>
-                        <a href="./product_details.php?id=<?php echo $item["ProductID"]; ?>">
-                            <p class="text-danger"><?php echo $item["ProductName"]; ?></p>
-                        </a>
-                        <p class="text-info"><?php echo $item["Price"]; ?></p>
-                    </div>
-                <?php } ?>
-            </div>
-        </div>
-        <!--================End Single Product Area =================-->
-        <!-- subscribe part here -->
-        <section class="subscribe_part section_padding">
+        <!--================Cart Area =================-->
+        <section class="cart_area section_padding">
             <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8">
-                        <div class="subscribe_part_content">
-                            <h2>Get promotions & updates!</h2>
-                            <p>Seamlessly empower fully researched growth strategies and interoperable internal or “organic” sources credibly innovate granular internal .</p>
-                            <div class="subscribe_form">
-                                <input type="email" placeholder="Enter your mail">
-                                <a href="#" class="btn_1">Subscribe</a>
-                            </div>
+                <div class="cart_inner">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Sản phẩm</th>
+                                    <th scope="col">Giá/th>
+                                    <th scope="col">Số lượng</th>
+                                    <th scope="col">Tổng tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $total_money = 0;
+                                if (isset($_SESSION["cart_items"]) && count($_SESSION["cart_items"]) > 0) {
+                                    foreach ($_SESSION["cart_items"] as $item) {
+                                        $id = $item["pro_id"];
+                                        $product = Product::get_product($id);
+                                        $prod = reset($product);
+                                        $total_money += $item["quantity"] * $prod["Price"];
+                                        echo
+                                            "<tr>
+                                    <td>
+                                        <div class='media'>
+                                            <div class='d-flex'>
+                                            <img style.'width:100px; height:100px' src=" . $prod["Picture"] . " />
+                                            </div>
+                                            <div class='media-body'>
+                                            <h5>" . $prod["ProductName"] . "</h5>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <h5>" . $prod["Price"] . "</h5>
+                                    </td>
+                                    <td>
+                                        <h5>" . $item["quantity"] . "</h5>
+                                    </td>
+                                    <td>
+                                        <h5>" . $total_money . "</h5>
+                                    </td>
+                                </tr>";
+                                    }
+                                } else {
+                                    echo "Không có sản phẩm nào trong giỏ hàng";
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+                        <div class="checkout_btn_inner float-right">
+                            <a class="btn_1" href="home.php">Tiếp tục mua</a>
+                            <a class="btn_1 checkout_btn_1" href="#">Thanh toán</a>
                         </div>
+
                     </div>
                 </div>
-            </div>
         </section>
-        <!-- subscribe part end -->
-    </main>
+        <!--================End Cart Area =================-->
+    </main>>
     <footer>
         <!-- Footer Start-->
         <div class="footer-area footer-padding">
@@ -298,12 +311,12 @@ $cates = Category::list_category();
     <!-- One Page, Animated-HeadLin -->
     <script src="./assets/js/wow.min.js"></script>
     <script src="./assets/js/animated.headline.js"></script>
-    <script src="./assets/js/jquery.magnific-popup.js"></script>
 
-    <!-- Scroll up, nice-select, sticky -->
+    <!-- Scrollup, nice-select, sticky -->
     <script src="./assets/js/jquery.scrollUp.min.js"></script>
     <script src="./assets/js/jquery.nice-select.min.js"></script>
     <script src="./assets/js/jquery.sticky.js"></script>
+    <script src="./assets/js/jquery.magnific-popup.js"></script>
 
     <!-- contact js -->
     <script src="./assets/js/contact.js"></script>
@@ -315,13 +328,6 @@ $cates = Category::list_category();
     <!-- Jquery Plugins, main Jquery -->
     <script src="./assets/js/plugins.js"></script>
     <script src="./assets/js/main.js"></script>
-
-    <!-- swiper js -->
-    <script src="./assets/js/swiper.min.js"></script>
-    <!-- swiper js -->
-    <script src="./assets/js/mixitup.min.js"></script>
-    <script src="./assets/js/jquery.counterup.min.js"></script>
-    <script src="./assets/js/waypoints.min.js"></script>
 
 </body>
 

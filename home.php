@@ -64,7 +64,7 @@
                                     </li>
                                     <ul class="submenu">
                                         <li><a href="#">Đăng nhập</a></li>
-                                        <li><a href="#">Giỏ hàng</a></li>
+                                        <li><a href="shopping_cart.php">Giỏ hàng</a></li>
                                         <li><a href="#">Element</a></li>
                                         <li><a href="#">Confirmation</a></li>
                                         <li><a href="#">Product Checkout</a></li>
@@ -83,7 +83,7 @@
                                     </div>
                                 </li>
                                 <li> <a href="#"><span class="flaticon-user"></span></a></li>
-                                <li><a href="#"><span class="flaticon-shopping-cart"></span></a> </li>
+                                <li><a href="shopping_cart.php"><span class="flaticon-shopping-cart"></span></a> </li>
                             </ul>
                         </div>
                     </div>
@@ -200,7 +200,7 @@
                         </a>
                         <p class="text-info"><span class="hisprice"><?php echo $item["Price"]; ?></span></p>
                         <p>
-                            <button type="button" class="btn btn-primary">Thêm vào giỏ hàng</button>
+                            <button type="button" class="btn btn-primary" onclick="location.href='./shopping_cart.php?id=<?php echo $item["ProductID"]; ?>'">Thêm vào giỏ hàng</button>
                         </p>
                     </div>
                 <?php } ?>
