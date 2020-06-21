@@ -82,15 +82,14 @@ class Product
         $file_temp = $this->picture['tmp_name'];
         $user_file = $this->picture['name'];
         $timestamp = date("Y") . date("m") . date("h") . date("i") . date("s");
-        $filepath = "images/" . $timestamp . $user_file;
+        $filepath = "uploads/" . $timestamp . $user_file;
         if (move_uploaded_file($file_temp, $filepath) == false) {
             return false;
         }
         $db = new Db();
         $sql = "UPDATE product SET ProductName='$this->productName',CateID='$this->cateID',Price='$this->price',Quantity='$this->quantity',Description='$this->description',Picture='$filepath' WHERE ProductID='$id'";
-        $result = $db->query_execute($sql);
-        if ($result == false) return false;
-        return true;
+        $result = $db->query_execute($sql);      
+        return $result;
     }
 
     public static function delect_product($id)
@@ -98,7 +97,6 @@ class Product
         $db = new Db();
         $sql = "DELETE FROM product WHERE ProductID='$id'";
         $result = $db->query_execute($sql);
-        if ($result == false) return false;
-        return true;
+        return $result;
     }
 }

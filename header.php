@@ -25,6 +25,14 @@
                 </div>
             </div>
         </div><br>
+        <?php
+        session_start();
+        if (isset($_SESSION['user']) != "") {
+            echo "<label>Xin chào: " . $_SESSION['user'] . "<a href='./logout.php'> Logout</a></label>";
+        } else {
+            echo "<label> Bạn chưa đăng nhập <a href='./login.php'>Login</a> - <a href='./register.php'>Register</a></label>";
+        }
+        ?>
         <div class="navbar navbar-default navbar-static-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">

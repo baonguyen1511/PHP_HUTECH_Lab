@@ -1,9 +1,37 @@
 <!doctype html>
 <html lang="zxx">
 <?php
-session_start();
-?>
-
+    require_once("./entities/product.class.php");
+    require_once("./entities/category.class.php");
+    $cates = Category::list_category();
+    session_start();
+    error_reporting(E_ALL);
+    ini_set('display_errors', '1');
+    if (isset($_GET["id"])) {
+        $pro_id = $_GET["id"];
+        $was_found = false;
+        $i = 0;
+        if (!isset($_SESSION["cart_items"]) || count($_SESSION["cart_items"]) < 1) {
+            $_SESSION["cart_items"] = array(0 => array("pro_id" => $pro_id, "quantity" => 1));
+        }
+    } else {
+        foreach ($_SESSION["cart_items"] as $item) {
+            $i++;
+            while (list($key, $value) = each($item)) {
+                if ($key == "pro_id" && $value == $pro_id) {
+                    # code...
+                    array_splice($_SESSION["cart_items"], $i - 1, 1, array(array("pro_id" => $pro_id, "quantity" => $item["quantity"] + 1)));
+                    $was_found = true;
+                }
+            }
+        }
+        if ($was_found == false) {
+            # code...
+            array_push($_SESSION["cart_items"], array("pro_id" => $pro_id, "quantity" => 1));
+        }
+        header("location: shopping_cart.php");
+    }
+    ?>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -84,39 +112,7 @@ session_start();
             </div>
         </div>
         <!-- Header End -->
-    </header>
-    <?php
-    require_once("./entities/product.class.php");
-    require_once("./entities/category.class.php");
-    $cates = Category::list_category();
-
-    error_reporting(E_ALL);
-    ini_set('display_errors', '1');
-    if (isset($_GET["id"])) {
-        $pro_id = $_GET["id"];
-        $was_found = false;
-        $i = 0;
-        if (!isset($_SESSION["cart_items"]) || count($_SESSION["cart_items"]) < 1) {
-            $_SESSION["cart_items"] = array(0 => array("pro_id" => $pro_id, "quantity" => 1));
-        }
-    } else {
-        foreach ($_SESSION["cart_items"] as $item) {
-            $i++;
-            while (list($key, $value) = each($item)) {
-                if ($key == 'pro_id' && $value == $pro_id) {
-                    # code...
-                    array_splice($_SESSION["cart_items"], $i - 1, 1, array(array("pro_id" => $pro_id, "quantity" => $item["quantity"] + 1)));
-                    $was_found = true;
-                }
-            }
-        }
-        if ($was_found == false) {
-            # code...
-            array_push($_SESSION["cart_items"], array("pro_id" => $pro_id, "quantity" => 1));
-        }
-        header("location: shopping_cart.php");
-    }
-    ?>
+    </header>    
     <main>
         <!-- Hero Area Start-->
         <div class="slider-area ">
@@ -141,7 +137,7 @@ session_start();
                             <thead>
                                 <tr>
                                     <th scope="col">Sản phẩm</th>
-                                    <th scope="col">Giá/th>
+                                    <th scope="col">Giá</th>
                                     <th scope="col">Số lượng</th>
                                     <th scope="col">Tổng tiền</th>
                                 </tr>

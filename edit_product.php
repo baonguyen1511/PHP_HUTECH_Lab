@@ -1,5 +1,13 @@
 <?php
 require_once("./entities/product.class.php");
+?>
+<?php
+$id = -1;
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+}
+include_once("header.php");
+$prods = Product::get_product($id);
 if (isset($_POST["btnsubmit"])) {
     $productID = $_POST["id"];
     $productName = $_POST["txtName"];
@@ -12,30 +20,22 @@ if (isset($_POST["btnsubmit"])) {
     $result = $newProduct->edit_product($productID);
     if (!$result) {
         header("Location:edit_product.php?id=$id");
+        
     } else {
         header("Location:manager_product.php");
     }
 }
 ?>
 <?php
-$id = -1;
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
+if (isset($_GET["failure"])) {
+    echo '<script language="javascript">';
+    echo 'alert("Cập nhật thất bại")';
+    echo '</script>';
 }
-include_once("header.php");
-$prods = Product::get_product($id);
-
 ?>
-<?php
-    if (isset($_GET["failure"])) {
-        echo '<script language="javascript">';
-        echo 'alert("Cập nhật thất bại")';
-        echo '</script>';
-    }
-    ?>
 <div class="container">
     <div class="col-sm-9 panel panel-info">
-    <h3 class="panel-heading text-center">Cập nhật thông tin</h3>
+        <h3 class="panel-heading text-center">Cập nhật thông tin</h3>
         <?php
         foreach ($prods as $item) {
         ?>
